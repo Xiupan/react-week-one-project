@@ -10,10 +10,10 @@ class App extends Component {
     super(props)
 
     this.state = {
-      username: "",
-      artist: "",
-      title: "",
-      notes: ""
+      userName: "",
+      songArtist: "",
+      songTitle: "",
+      songNotes: ""
     }
   }
 
@@ -22,9 +22,9 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar/>
-        <PlayList/>
         <PlayListForm/>
         <PlayListItem/>
+        <PlayList/>
       </div>
     );
   }
