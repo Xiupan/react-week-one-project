@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PlayListItem from './PlayListItem'
 
 class PlayList extends Component {
   constructor(props){
@@ -32,31 +33,9 @@ class PlayList extends Component {
   }
 
   render() {
-    const elements = this.state.songs.map(song => {
-      return(
-        <div className="card" key={song._id}>
-          <ul>
-            <li>
-              <h5 className="card-text">
-                User: {song.userName}
-              </h5>
-              <h5 className="card-text">
-                Artist/Band: {song.songArtist}
-              </h5>
-              <h5 className="card-text">
-                Title: {song.songTitle}
-              </h5>
-              <h5 className="card-text">
-                Notes: {song.songNotes}
-              </h5>
-            </li>
-          </ul>
-        </div>
-      )
-    })
     return (
       <div className="card-deck">
-        {elements}
+        <PlayListItem songs={this.state.songs}/>
       </div>
     )
   }
