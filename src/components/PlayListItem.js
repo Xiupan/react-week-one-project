@@ -1,14 +1,8 @@
 import React, {Component} from 'react'
 
 class PlayListItem extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      songs: []
-    }
-  }
-
   render() {
+    console.log("this.props.songs", this.props.songs);
     const elements = this.props.songs.map(song => {
       return (
         <div className="card" key={song._id}>

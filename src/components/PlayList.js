@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PlayListItem from './PlayListItem'
+import PlayListForm from './PlayListForm'
 
 class PlayList extends Component {
   constructor(props){
@@ -16,7 +17,6 @@ class PlayList extends Component {
       this.setState({
         songs: data
       });
-      console.log("state", this.state.songs);
     })
   }
 
@@ -26,6 +26,7 @@ class PlayList extends Component {
     fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
       return results.json();
     }).then(data => {
+      console.log("Fetching data.");
       this.setState({
         songs: data
       });
@@ -35,7 +36,8 @@ class PlayList extends Component {
   render() {
     return (
       <div className="card-deck">
-        <PlayListItem songs={this.state.songs}/>
+        <PlayListItem songs={this.state.songs} />
+        <PlayListForm fetchData={this.fetchData}/>
       </div>
     )
   }

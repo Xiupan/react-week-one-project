@@ -1,7 +1,15 @@
 import React, {Component} from 'react'
-import PlayList from './PlayList'
 
 class PlayListForm extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      userName: "",
+      songTitle: "",
+      songArtist: "",
+      songNotes: ""
+    }
+  }
   handleUsernameChange = (event) => {
     this.setState({userName: event.target.value})
   }
@@ -16,17 +24,6 @@ class PlayListForm extends Component {
 
   handleNotesChange = (event) => {
     this.setState({songNotes: event.target.value})
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.setState({
-      userName: event.target.username.value,
-      songArtist: event.target.artist.value,
-      songTitle: event.target.songTitle.value,
-      songNotes: event.target.notes.value
-    })
-    console.log(this.state);
   }
 
   addToList = (event) => {
@@ -48,8 +45,6 @@ class PlayListForm extends Component {
       }
     }).then(response => {
       console.log(response, "yay");
-      // this.fetchData()
-
     }).catch(err => {
       console.log(err, "boo!");
     });
@@ -61,10 +56,15 @@ class PlayListForm extends Component {
     });
   }
 
+  handleSubmit = (event) => {
+    this.addToList(event)
+    this.props.fetchData(event)
+  }
+
   render() {
     return (
       <div>
-        <form onSubmit={this.addToList}>
+        <form onSubmit={this.handleSubmit}>
           <ul>
             <li>
               <label htmlFor="userName">Username:</label>
