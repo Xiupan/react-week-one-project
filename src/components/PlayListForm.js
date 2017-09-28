@@ -45,6 +45,14 @@ class PlayListForm extends Component {
       }
     }).then(response => {
       console.log(response, "yay");
+      // fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
+      //   return results.json();
+      // }).then(data => {
+      //   console.log("Fetching data.");
+      //   this.setState({
+      //     songs: data
+      //   });
+      // })
     }).catch(err => {
       console.log(err, "boo!");
     });
@@ -56,15 +64,15 @@ class PlayListForm extends Component {
     });
   }
 
-  handleSubmit = (event) => {
-    this.addToList(event)
-    this.props.fetchData(event)
-  }
+  // handleSubmit = () => {
+  //   this.addToList()
+  //   this.props.fetchData()
+  // }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.addToList}>
           <ul>
             <li>
               <label htmlFor="userName">Username:</label>
