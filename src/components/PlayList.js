@@ -22,7 +22,7 @@ class PlayList extends Component {
 
   // fetchData is meant to be a manual fetch tied to some kind of update button
   fetchData = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
       return results.json();
     }).then(data => {
